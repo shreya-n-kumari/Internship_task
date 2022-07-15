@@ -1,0 +1,20 @@
+create database if not exists hindalco;
+
+use hindalco;
+
+create table hindalco(
+id int auto_increment primary key,
+datetime datetime,
+ close float,
+ high float,
+ low float,
+ open float,
+ volume mediumint,
+ instrument char(255)
+);
+describe hindalco;
+
+insert into hindalco(id, datetime, close, high, low, open, volume, instrument)
+value(1, '2014-01-24 00:00:00', 114, 118, 113, 113.15, 5737135, 'HINDALCO');
+
+select * from hindalco;
