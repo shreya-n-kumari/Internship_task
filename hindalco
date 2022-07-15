@@ -1,0 +1,33 @@
+import mysql.connector
+
+# establishing the connection
+conn = mysql.connector.connect(user='root', password='password', host='127.0.0.1', database='hindalco')
+
+# Creating a cursor object using the cursor() method
+cursor = conn.cursor()
+
+# Preparing SQL query to INSERT a record into the database.
+insert_stmt = (
+    "INSERT INTO hindalco(datetime, close, high, low, open, volume, instrument) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+)
+data = ('2014-01-27 00:00:00', 111.1, 112.7, 109.3, 112, 872457, 'HINDALCO')
+
+try:
+    print("saving...")
+    # Executing the SQL command
+    cursor.execute(insert_stmt, data)
+
+    # Commit your changes in the database
+    conn.commit()
+
+except exception :
+    print("error ", exception)
+    # Rolling back in case of error
+    conn.rollback()
+
+
+print("Data Inserted")
+
+# Closing the connection
+conn.close()
+
